@@ -5,7 +5,7 @@ const Policy = () => {
         <h2 className="text-4xl lg:text-6xl  font-bold md:text-center">
           Privacy-
           <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-            Policy
+            Policyyyyyyyyyy
           </span>
         </h2>
       </div>
