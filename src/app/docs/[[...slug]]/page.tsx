@@ -1,11 +1,12 @@
-import DocsBreadcrumb from "@/app/docs/docs_components/docs-breadcrumb"
-import Pagination from "@/app/docs/docs_components/pagination"
-import Toc from "@/app/docs/docs_components/toc"
-import { Separator } from "@/components/ui/separator"
-import { getMarkdownForSlug } from "@/lib/markdown"
-import { page_routes } from "@/texts-and-menues/docs-sidebar-links"
-import { notFound } from "next/navigation"
-import { PropsWithChildren, cache } from "react"
+import DocsBreadcrumb from "@/app/docs/docs_components/docs-breadcrumb";
+import Pagination from "@/app/docs/docs_components/pagination";
+import Toc from "@/app/docs/docs_components/toc";
+import { Separator } from "@/components/ui/separator";
+import { getMarkdownForSlug } from "@/lib/markdown";
+import { page_routes } from "@/texts-and-menues/docs-sidebar-links";
+import { notFound } from "next/navigation";
+import { PropsWithChildren, cache } from "react";
+
 
 type PageProps = {
   params: { slug: string[] }
@@ -54,11 +55,14 @@ function Markdown({ children }: PropsWithChildren) {
 export async function generateMetadata({ params: { slug = [] } }: PageProps) {
   const pathName = slug.join("/")
   const res = await cachedGetMarkdownForSlug(pathName)
-  if (!res) return null
-  const { frontmatter } = res
-  return {
-    title: frontmatter.title,
-    description: frontmatter.description
+  if (res) {
+    const { frontmatter } = res
+    return {
+      title: frontmatter.title,
+      description: frontmatter.description
+    }
+  } else {
+    return 0
   }
 }
 

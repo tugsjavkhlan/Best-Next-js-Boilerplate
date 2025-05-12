@@ -15,6 +15,7 @@ export default async function Layout({
   const messages = await getMessages()
   return (
     <main>
+      <p>hello</p>
       <Navbar />
       <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       <Footer />
